@@ -1,0 +1,49 @@
+{
+    "name": "esign/laravel-seo",
+    "description": "A laravel package to easily get going with SEO.",
+    "keywords": [
+        "esign",
+        "laravel-seo",
+        "seo",
+        "open graph",
+        "twitter card",
+        "meta"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jordy Van der Haegen",
+            "email": "jordy@esign.eu"
+        }
+    ],
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "orchestra/testbench": "^6.6"
+    }, 
+    "autoload": {
+        "psr-4": {
+            "Esign\\Seo\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Esign\\Seo\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Esign\\Seo\\SeoServiceProvider"
+            ]
+        }
+    }
+}
