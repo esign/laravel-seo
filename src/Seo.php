@@ -11,6 +11,8 @@ class Seo
 
     public function __construct()
     {
+        $this->set('titleSeparator', config('seo.defaults.title_separator'));
+        $this->set('titleSuffix', config('seo.defaults.title_suffix'));
         $this->set('robots', config('seo.defaults.robots'));
         $this->set('languageUrls', []);
     }

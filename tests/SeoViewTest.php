@@ -23,6 +23,37 @@ class SeoViewTest extends TestCase
     public function it_can_render_a_title()
     {
         Seo::set('title', 'Esign, hét creatieve digital agency');
+        $this->assertSeeInView('<title>Esign, hét creatieve digital agency - Laravel</title>');
+        $this->assertSeeInView('<meta property="og:title" content="Esign, hét creatieve digital agency - Laravel">');
+        $this->assertSeeInView('<meta name="twitter:title" content="Esign, hét creatieve digital agency - Laravel">');
+    }
+
+    /** @test */
+    public function it_can_render_a_title_separator()
+    {
+        Seo::set('title', 'Esign, hét creatieve digital agency');
+        Seo::set('titleSeparator', ' | ');
+        $this->assertSeeInView('<title>Esign, hét creatieve digital agency | Laravel</title>');
+        $this->assertSeeInView('<meta property="og:title" content="Esign, hét creatieve digital agency | Laravel">');
+        $this->assertSeeInView('<meta name="twitter:title" content="Esign, hét creatieve digital agency | Laravel">');
+    }
+
+    /** @test */
+    public function it_can_render_a_title_suffix()
+    {
+        Seo::set('title', 'Esign, hét creatieve digital agency');
+        Seo::set('titleSuffix', 'Esign');
+        $this->assertSeeInView('<title>Esign, hét creatieve digital agency - Esign</title>');
+        $this->assertSeeInView('<meta property="og:title" content="Esign, hét creatieve digital agency - Esign">');
+        $this->assertSeeInView('<meta name="twitter:title" content="Esign, hét creatieve digital agency - Esign">');
+    }
+
+    /** @test */
+    public function it_can_render_a_title_without_separator_and_suffix()
+    {
+        Seo::set('title', 'Esign, hét creatieve digital agency');
+        Seo::set('titleSeparator', '');
+        Seo::set('titleSuffix', '');
         $this->assertSeeInView('<title>Esign, hét creatieve digital agency</title>');
         $this->assertSeeInView('<meta property="og:title" content="Esign, hét creatieve digital agency">');
         $this->assertSeeInView('<meta name="twitter:title" content="Esign, hét creatieve digital agency">');
