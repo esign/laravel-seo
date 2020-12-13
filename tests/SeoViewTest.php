@@ -77,6 +77,14 @@ class SeoViewTest extends TestCase
     }
 
     /** @test */
+    public function it_can_render_a_canonical_url()
+    {
+        Seo::set('canonical', 'https://esign.eu');
+        $this->assertSeeInView('<link rel="canonical" href="https://esign.eu">');
+        $this->assertSeeInView('<meta property="og:url" content="https://esign.eu">');
+    }
+
+    /** @test */
     public function it_can_render_robots()
     {
         Seo::set('robots', 'all,index');
