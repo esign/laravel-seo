@@ -13,6 +13,7 @@ class Seo
     {
         $this->set('titleSeparator', config('seo.defaults.title_separator'));
         $this->set('titleSuffix', config('seo.defaults.title_suffix'));
+        $this->set('image', config('seo.defaults.share_image'));
         $this->set('canonical', url()->current());
         $this->set('robots', config('seo.defaults.robots'));
         $this->set('alternateUrls', []);
