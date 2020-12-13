@@ -17,6 +17,7 @@ class Seo
         $this->set('canonical', url()->current());
         $this->set('robots', config('seo.defaults.robots'));
         $this->set('alternateUrls', []);
+        $this->runGenerators();
     }
 
     public function has(string $key): bool
@@ -46,5 +47,14 @@ class Seo
     public function setAlternateUrlsForModel(UrlTranslatableInterface $model): self
     {
         return $this->set('alternateUrls', $model->alternateUrls);
+    }
+
+    public function runGenerators(): self
+    {
+        collect(config('seo.generators', []))
+            ->map(fn (string $generator) => new $generator($this))
+            ->each(fn (SeoGenerator $generator) => $generator->generate());
+
+        return $this;
     }
 }
