@@ -104,4 +104,12 @@ class SeoViewTest extends TestCase
         Seo::set('next', 'https://esign.eu/blog?page=2');
         $this->assertSeeInView('<link rel="next" href="https://esign.eu/blog?page=2">');
     }
+
+    /** @test */
+    public function it_can_render_alternate_urls()
+    {
+        Seo::set('alternateUrls', ['nl' => 'https://esign.eu/nl', 'en' => 'https://esign.eu/en']);
+        $this->assertSeeInView('<link rel="alternate" hreflang="nl" href="https://esign.eu/nl">');
+        $this->assertSeeInView('<link rel="alternate" hreflang="en" href="https://esign.eu/en">');
+    }
 }

@@ -15,7 +15,7 @@ class Seo
         $this->set('titleSuffix', config('seo.defaults.title_suffix'));
         $this->set('canonical', url()->current());
         $this->set('robots', config('seo.defaults.robots'));
-        $this->set('languageUrls', []);
+        $this->set('alternateUrls', []);
     }
 
     public function has(string $key): bool

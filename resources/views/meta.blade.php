@@ -4,3 +4,6 @@
 <link rel="canonical" href="{{ seo()->get('canonical') }}">
 <link rel="next" href="{{ seo()->get('next') }}">
 <link rel="prev" href="{{ seo()->get('prev') }}">
+@foreach (seo()->get('alternateUrls') as $locale => $url)
+<link rel="alternate" hreflang="{{ $locale }}" href="{{ $url }}">
+@endforeach
