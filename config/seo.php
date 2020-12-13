@@ -7,4 +7,5 @@ return [
         'share_image' => '',
         'robots' => 'all,index,follow',
     ],
+    'generators' => [],
 ];
