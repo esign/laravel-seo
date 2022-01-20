@@ -2,49 +2,62 @@
 
 namespace Esign\Seo;
 
-use Esign\Seo\Contracts\SeoAbleInterface;
-use Esign\Seo\Contracts\UrlTranslatableInterface;
+use Esign\Seo\Tags\Meta;
+use Esign\Seo\Tags\OpenGraph;
+use Esign\Seo\Tags\TwitterCard;
+use Illuminate\Support\Traits\Conditionable;
 
 class Seo
 {
-    protected array $data = [];
+    use Conditionable;
 
-    public function __construct()
+    public function setTitle(?string $title): self
     {
-        $this->set('titleSeparator', config('seo.defaults.title_separator'));
-        $this->set('titleSuffix', config('seo.defaults.title_suffix'));
-        $this->set('image', config('seo.defaults.share_image'));
-        $this->set('canonical', url()->current());
-        $this->set('robots', config('seo.defaults.robots'));
-        $this->set('alternateUrls', []);
-    }
-
-    public function has(string $key): bool
-    {
-        return isset($this->data[$key]);
-    }
-
-    public function get(string $key)
-    {
-        return $this->data[$key] ?? '';
-    }
-
-    public function set(string $key, $value): self
-    {
-        $this->data[$key] = $value;
+        $this->meta()->setTitle($title);
+        $this->og()->setTitle($title);
+        $this->twitter()->setTitle($title);
 
         return $this;
     }
 
-    public function setSeoForModel(SeoAbleInterface $model): self
+    public function setDescription(?string $description): self
     {
-        return $this
-            ->set('title', $model->seoTitle)
-            ->set('description', $model->seoDescription);
+        $this->meta()->setDescription($description);
+        $this->og()->setDescription($description);
+        $this->twitter()->setDescription($description);
+
+        return $this;
     }
 
-    public function setAlternateUrlsForModel(UrlTranslatableInterface $model): self
+    public function setUrl(?string $url): self
     {
-        return $this->set('alternateUrls', $model->alternateUrls);
+        $this->meta()->setUrl($url);
+        $this->og()->setUrl($url);
+
+        return $this;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->meta()->setImage($image);
+        $this->og()->setImage($image);
+        $this->twitter()->setImage($image);
+
+        return $this;
+    }
+
+    public function meta(): Meta
+    {
+        return app('seo.meta');
+    }
+
+    public function og(): OpenGraph
+    {
+        return app('seo.open-graph');
+    }
+
+    public function twitter(): TwitterCard
+    {
+        return app('seo.twitter-card');
     }
 }

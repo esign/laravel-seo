@@ -1,9 +1,9 @@
-<title>{{ seo()->get('title') . seo()->get('titleSeparator') . seo()->get('titleSuffix') }}</title>
-<meta name="description" content="{{ seo()->get('description') }}">
-<meta name="robots" content="{{ seo()->get('robots') }}">
-<link rel="canonical" href="{{ seo()->get('canonical') }}">
-<link rel="next" href="{{ seo()->get('next') }}">
-<link rel="prev" href="{{ seo()->get('prev') }}">
-@foreach (seo()->get('alternateUrls') as $locale => $url)
+<title>{{ seo()->meta()->getTitle() }}</title>
+<meta name="description" content="{{ seo()->meta()->getDescription() }}">
+<meta name="robots" content="{{ seo()->meta()->getRobots() }}">
+<link rel="canonical" href="{{ seo()->meta()->getUrl() }}">
+<link rel="next" href="{{ seo()->meta()->getNext() }}">
+<link rel="prev" href="{{ seo()->meta()->getPrev() }}">
+@foreach (seo()->meta()->getAlternateUrls() as $locale => $url)
 <link rel="alternate" hreflang="{{ $locale }}" href="{{ $url }}">
 @endforeach

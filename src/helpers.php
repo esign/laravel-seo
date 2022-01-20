@@ -3,8 +3,8 @@
 use Esign\Seo\Seo;
 
 if (! function_exists('seo')) {
-    function seo()
+    function seo(): Seo
     {
-        return app(Seo::class);
+        return app('seo');
     }
 }

@@ -13,15 +13,17 @@
     "authors": [
         {
             "name": "Jordy Van der Haegen",
-            "email": "jordy@esign.eu"
+            "email": "jordy.vanderhaegen@gmail.com"
         }
     ],
     "require": {
-        "php": "^7.4"
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
-        "orchestra/testbench": "^6.6"
+        "orchestra/testbench": "^6.23",
+        "friendsofphp/php-cs-fixer": "^3.5"
     }, 
     "autoload": {
         "psr-4": {
@@ -37,13 +39,22 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "test": "vendor/bin/phpunit",
+        "phpcs": "vendor/bin/php-cs-fixer fix"
     },
     "extra": {
         "laravel": {
             "providers": [
                 "Esign\\Seo\\SeoServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Seo": "Esign\\Seo\\Facades\\Seo",
+                "Meta": "Esign\\Seo\\Facades\\Tags\\Meta",
+                "OpenGraph": "Esign\\Seo\\Facades\\Tags\\OpenGraph",
+                "TwitterCard": "Esign\\Seo\\Facades\\Tags\\TwitterCard"
+            }
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
