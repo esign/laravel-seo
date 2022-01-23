@@ -87,6 +87,18 @@ OpenGraph::setTitle('My Open Graph Title');
 TwitterCard::setTitle('My Twitter Card Title');
 ```
 
+You can also use a fluent API that allows you to chain methods:
+```php
+use Esign\Seo\Facades\Seo;
+use Esign\Seo\Tags\Meta;
+use Esign\Seo\Tags\OpenGraph;
+use Esign\Seo\Tags\TwitterCard;
+
+Seo::meta(fn (Meta $meta) => $meta->setTitle('My Meta Title'))
+    ->og(fn (OpenGraph $openGraph) => $openGraph->setTitle('My Open Graph Title'))
+    ->twitter(fn (TwitterCard $twitterCard) => $twitterCard->setTitle('My Twitter Card Title'));
+```
+
 ### Defining mutators
 This package allows you to define [mutators](https://laravel.com/docs/8.x/eloquent-mutators#defining-a-mutator) like Laravel's model attributes:
 ```php

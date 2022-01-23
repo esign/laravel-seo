@@ -7,6 +7,9 @@ use Esign\Seo\Facades\Tags\Meta;
 use Esign\Seo\Facades\Tags\OpenGraph;
 use Esign\Seo\Facades\Tags\TwitterCard;
 use Esign\Seo\Seo as BaseSeo;
+use Esign\Seo\Tags\Meta as MetaTag;
+use Esign\Seo\Tags\OpenGraph as OpenGraphTag;
+use Esign\Seo\Tags\TwitterCard as TwitterCardTag;
 
 class SeoTest extends TestCase
 {
@@ -74,5 +77,47 @@ class SeoTest extends TestCase
             OpenGraph::getTitle(),
             TwitterCard::getTitle()
         ]);
+    }
+
+    /** @test */
+    public function it_can_get_the_meta_tag()
+    {
+        $this->assertInstanceOf(MetaTag::class, Seo::meta());
+    }
+
+    /** @test */
+    public function it_can_get_the_opengraph_tag()
+    {
+        $this->assertInstanceOf(OpenGraphTag::class, Seo::og());
+    }
+
+    /** @test */
+    public function it_can_get_the_twitter_card_tag()
+    {
+        $this->assertInstanceOf(TwitterCardTag::class, Seo::twitter());
+    }
+
+    /** @test */
+    public function it_can_pass_a_callback_to_the_meta_tag()
+    {
+        Seo::meta(fn (MetaTag $meta) => $meta->setTitle('Title A'));
+
+        $this->assertEquals('Title A', Meta::getTitle());
+    }
+
+    /** @test */
+    public function it_can_pass_a_callback_to_the_opengraph_tag()
+    {
+        Seo::og(fn (OpenGraphTag $openGraph) => $openGraph->setTitle('Title A'));
+
+        $this->assertEquals('Title A', OpenGraph::getTitle());
+    }
+
+    /** @test */
+    public function it_can_pass_a_callback_to_the_twitter_card_tag()
+    {
+        Seo::twitter(fn (TwitterCardTag $twitterCard) => $twitterCard->setTitle('Title A'));
+
+        $this->assertEquals('Title A', TwitterCard::getTitle());
     }
 }

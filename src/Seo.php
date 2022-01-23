@@ -46,18 +46,42 @@ class Seo
         return $this;
     }
 
-    public function meta(): Meta
+    public function meta(?callable $callback = null): self | Meta
     {
-        return app('seo.meta');
+        $meta = app('seo.meta');
+
+        if ($callback) {
+            $callback($meta);
+
+            return $this;
+        }
+
+        return $meta;
     }
 
-    public function og(): OpenGraph
+    public function og(?callable $callback = null): self | OpenGraph
     {
-        return app('seo.open-graph');
+        $openGraph = app('seo.open-graph');
+
+        if ($callback) {
+            $callback($openGraph);
+
+            return $this;
+        }
+
+        return $openGraph;
     }
 
-    public function twitter(): TwitterCard
+    public function twitter(?callable $callback = null): self | TwitterCard
     {
-        return app('seo.twitter-card');
+        $twitterCard = app('seo.twitter-card');
+
+        if ($callback) {
+            $callback($twitterCard);
+
+            return $this;
+        }
+
+        return $twitterCard;
     }
 }
