@@ -46,6 +46,13 @@ class Seo
         return $this;
     }
 
+    public function setAlternateUrls(array $alternateUrls): self
+    {
+        $this->meta()->setAlternateUrls($alternateUrls);
+
+        return $this;
+    }
+
     public function meta(?callable $callback = null): self | Meta
     {
         $meta = app('seo.meta');

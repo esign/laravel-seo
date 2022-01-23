@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static self setDescription(?string $title)
  * @method static self setUrl(?string $title)
  * @method static self setImage(?string $title)
+ * @method static self setAlternateUrls(array $alternateUrls)
  * @method static self|\Esign\Seo\Tags\Meta meta(?callable $callback = null)
  * @method static self|\Esign\Seo\Tags\OpenGraph og(?callable $callback = null)
  * @method static self|\Esign\Seo\Tags\TwitterCard twitter(?callable $callback = null)

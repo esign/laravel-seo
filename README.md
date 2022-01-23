@@ -123,6 +123,7 @@ Seo::setTitle(?string $title);
 Seo::setDescription(?string $title);
 Seo::setUrl(?string $title);
 Seo::setImage(?string $title);
+Seo::setAlternateUrls(array $alternateUrls);
 Seo::meta();
 Seo::og();
 Seo::twitter();

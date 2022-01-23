@@ -80,6 +80,17 @@ class SeoTest extends TestCase
     }
 
     /** @test */
+    public function it_can_set_alternate_urls()
+    {
+        Seo::setAlternateUrls(['nl' => 'https://esign.eu/nl', 'en' => 'https://esign.eu/en']);
+
+        $this->assertEquals(
+            ['nl' => 'https://esign.eu/nl', 'en' => 'https://esign.eu/en'],
+            Meta::getAlternateUrls(),
+        );
+    }
+
+    /** @test */
     public function it_can_get_the_meta_tag()
     {
         $this->assertInstanceOf(MetaTag::class, Seo::meta());
