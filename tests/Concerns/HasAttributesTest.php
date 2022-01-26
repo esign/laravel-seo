@@ -67,4 +67,24 @@ class HasAttributesTest extends TestCase
         $this->assertTrue($testTag->has('keyA'));
         $this->assertFalse($testTag->has('keyB'));
     }
+
+    /** @test */
+    public function it_can_do_stuff_conditionally()
+    {
+        $testTag = new TestTag();
+        $testTag->when(true, fn (TestTag $testTag) => $testTag->set('key', 'value A'));
+        $testTag->when(false, fn (TestTag $testTag) => $testTag->set('key', 'value B'));
+
+        $this->assertEquals('value A', $testTag->get('key'));
+    }
+
+    /** @test */
+    public function it_can_do_stuff_conditionally_when_empty()
+    {
+        $testTag = new TestTag();
+        $testTag->whenEmpty('key', fn (TestTag $testTag) => $testTag->set('key', 'value A'));
+        $testTag->whenEmpty('key', fn (TestTag $testTag) => $testTag->set('key', 'value B'));
+
+        $this->assertEquals('value A', $testTag->get('key'));
+    }
 }

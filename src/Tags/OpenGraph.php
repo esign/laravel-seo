@@ -3,11 +3,9 @@
 namespace Esign\Seo\Tags;
 
 use Esign\Seo\Concerns\HasAttributes;
-use Illuminate\Support\Traits\Conditionable;
 
 class OpenGraph
 {
-    use Conditionable;
     use HasAttributes;
 
     public function setType(?string $type): self

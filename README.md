@@ -156,6 +156,7 @@ use Esign\Seo\Facades\Tags\Meta;
 
 // Conditions
 Meta::when(mixed $value, callable $callback, callable|null $default);
+Meta::whenEmpty(string $key, callable $callback, callable|null $default);
 Meta::unless(mixed $value, callable $callback, callable|null $default);
 
 // Getting attributes
@@ -188,6 +189,7 @@ use Esign\Seo\Facades\Tags\OpenGraph;
 
 // Conditions
 OpenGraph::when(mixed $value, callable $callback, callable|null $default);
+OpenGraph::whenEmpty(string $key, callable $callback, callable|null $default);
 OpenGraph::unless(mixed $value, callable $callback, callable|null $default);
 
 // Getting attributes
@@ -216,6 +218,7 @@ use Esign\Seo\Facades\Tags\TwitterCard;
 
 // Conditions
 TwitterCard::when(mixed $value, callable $callback, callable|null $default);
+TwitterCard::whenEmpty(string $key, callable $callback, callable|null $default);
 TwitterCard::unless(mixed $value, callable $callback, callable|null $default);
 
 // Getting attributes

@@ -5,6 +5,9 @@ namespace Esign\Seo\Facades\Tags;
 use Illuminate\Support\Facades\Facade;
 
 /**
+ * @method static self|mixed when(mixed $value, callable $callback, callable|null $default)
+ * @method static self|mixed whenEmpty(string $key, callable $callback, callable|null $default)
+ * @method static self|mixed unless(mixed $value, callable $callback, callable|null $default)
  * @method static self set(string $key, mixed $value)
  * @method static mixed setRaw(string $key, mixed $value)
  * @method static mixed get(string $key, mixed $default = null)

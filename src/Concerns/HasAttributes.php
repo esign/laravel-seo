@@ -3,9 +3,12 @@
 namespace Esign\Seo\Concerns;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Traits\Conditionable;
 
 trait HasAttributes
 {
+    use Conditionable;
+
     protected array $attributes = [];
 
     public function set(string $key, mixed $value): self
@@ -36,6 +39,11 @@ trait HasAttributes
     public function has(string $key): bool
     {
         return ! empty($this->get($key));
+    }
+
+    public function whenEmpty(string $key, callable $callback, ?callable $default = null): self
+    {
+        return $this->unless($this->has($key), $callback, $default);
     }
 
     protected function hasSetMutator($key): bool
