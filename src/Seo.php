@@ -2,6 +2,7 @@
 
 namespace Esign\Seo;
 
+use Esign\Seo\Contracts\SeoAble;
 use Esign\Seo\Tags\Meta;
 use Esign\Seo\Tags\OpenGraph;
 use Esign\Seo\Tags\TwitterCard;
@@ -51,6 +52,16 @@ class Seo
         $this->meta()->setAlternateUrls($alternateUrls);
 
         return $this;
+    }
+
+    public function setSeoAble(SeoAble $seoAble): self
+    {
+        return $this
+            ->setTitle($seoAble->getSeoTitle())
+            ->setDescription($seoAble->getSeoDescription())
+            ->setImage($seoAble->getSeoImage())
+            ->setUrl($seoAble->getSeoUrl())
+            ->setAlternateUrls($seoAble->getSeoAlternateUrls());
     }
 
     public function meta(?callable $callback = null): self | Meta

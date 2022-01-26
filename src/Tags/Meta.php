@@ -47,7 +47,7 @@ class Meta
 
     public function getUrl(): ?string
     {
-        return $this->get('url');
+        return $this->get('url', url()->current());
     }
 
     public function setPrev(?string $prev): self

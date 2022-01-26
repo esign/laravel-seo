@@ -113,6 +113,26 @@ class Meta extends EsignMeta
 }
 ```
 
+
+### Making models SeoAble
+To make your models SeoAble, you may implement the `Esign\Seo\Contracts\SeoAble` interface.
+A handy trait `Esign\Seo\Concerns\HasSeoDefaults` has been included that can quickly help you set up some seo defaults for your model.
+This however is not necessary, you could also implement the methods yourself:
+```php
+use Esign\Seo\Concerns\HasSeoDefaults;
+use Esign\Seo\Contracts\SeoAble;
+
+class Post extends Model implements SeoAble
+{
+    use HasSeoDefaults;
+
+    public function getSeoUrl(): ?string
+    {
+        return route('posts.show', ['slug' => $this->slug]);
+    }
+}
+```
+
 ### Seo API
 ```php
 use Esign\Seo\Facades\Seo;

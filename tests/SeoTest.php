@@ -10,6 +10,8 @@ use Esign\Seo\Seo as BaseSeo;
 use Esign\Seo\Tags\Meta as MetaTag;
 use Esign\Seo\Tags\OpenGraph as OpenGraphTag;
 use Esign\Seo\Tags\TwitterCard as TwitterCardTag;
+use Esign\Seo\Tests\Support\Models\Post;
+use Esign\Seo\Tests\Support\Models\PostWithDefaults;
 
 class SeoTest extends TestCase
 {
@@ -75,7 +77,7 @@ class SeoTest extends TestCase
         $this->assertEqualsMany('Title A', [
             Meta::getTitle(),
             OpenGraph::getTitle(),
-            TwitterCard::getTitle()
+            TwitterCard::getTitle(),
         ]);
     }
 
@@ -130,5 +132,38 @@ class SeoTest extends TestCase
         Seo::twitter(fn (TwitterCardTag $twitterCard) => $twitterCard->setTitle('Title A'));
 
         $this->assertEquals('Title A', TwitterCard::getTitle());
+    }
+
+    /** @test */
+    public function it_can_set_an_seoable()
+    {
+        $post = new Post();
+
+        Seo::setSeoAble($post);
+
+        $this->assertEquals('Esign, hét creatieve digital agency', Meta::getTitle());
+        $this->assertEquals('Esign helpt jouw merk met zijn online aanwezigheid ...', Meta::getDescription());
+        $this->assertEquals('https://esign.eu/en', Meta::getUrl());
+        $this->assertEquals('https://esign.eu/share-image.jpg', Meta::getImage());
+        $this->assertEquals([
+            'en' => 'https://esign.eu/en',
+            'nl' => 'https://esign.eu/nl',
+        ], Meta::getAlternateUrls());
+    }
+
+    /** @test */
+    public function it_can_set_an_seoable_with_defaults()
+    {
+        $post = new PostWithDefaults();
+        $post->title = 'My Post Title';
+        $post->body = 'My Post Body';
+
+        Seo::setSeoAble($post);
+
+        $this->assertEquals('My Post Title', Meta::getTitle());
+        $this->assertEquals('My Post Body', Meta::getDescription());
+        $this->assertNull(Meta::getImage());
+        $this->assertEquals('http://localhost', Meta::getUrl());
+        $this->assertEmpty(Meta::getAlternateUrls());
     }
 }

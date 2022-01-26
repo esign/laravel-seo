@@ -12,10 +12,11 @@ use Illuminate\Support\Facades\Facade;
  * @method static self setUrl(?string $title)
  * @method static self setImage(?string $title)
  * @method static self setAlternateUrls(array $alternateUrls)
+ * @method static self setSeoAble(\Esign\Seo\Contracts\SeoAble $seoAble)
  * @method static self|\Esign\Seo\Tags\Meta meta(?callable $callback = null)
  * @method static self|\Esign\Seo\Tags\OpenGraph og(?callable $callback = null)
  * @method static self|\Esign\Seo\Tags\TwitterCard twitter(?callable $callback = null)
- * 
+ *
  * @see \Esign\Seo\Seo
  */
 class Seo extends Facade
