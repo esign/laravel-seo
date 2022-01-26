@@ -136,6 +136,7 @@ class Post extends Model implements SeoAble
 ### Seo API
 ```php
 use Esign\Seo\Facades\Seo;
+use Esign\Seo\Contracts\SeoAble;
 
 Seo::when(mixed $value, callable $callback, callable|null $default);
 Seo::unless(mixed $value, callable $callback, callable|null $default);
@@ -144,6 +145,7 @@ Seo::setDescription(?string $title);
 Seo::setUrl(?string $title);
 Seo::setImage(?string $title);
 Seo::setAlternateUrls(array $alternateUrls);
+Seo::setSeoAble(SeoAble $seoAble)
 Seo::meta();
 Seo::og();
 Seo::twitter();
