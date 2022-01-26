@@ -41,7 +41,7 @@ trait HasAttributes
         return ! empty($this->get($key));
     }
 
-    public function whenEmpty(string $key, callable $callback, ?callable $default = null): self
+    public function whenEmpty(string $key, callable $callback, ?callable $default = null): mixed
     {
         return $this->unless($this->has($key), $callback, $default);
     }
