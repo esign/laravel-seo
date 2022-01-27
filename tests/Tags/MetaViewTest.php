@@ -11,7 +11,13 @@ class MetaViewTest extends TestCase
     public function it_can_render_a_title()
     {
         Meta::setTitle('Esign, hét creatieve digital agency');
-        $this->assertSeeInView('<title>Esign, hét creatieve digital agency</title>', 'meta');
+        $this->assertSeeInView('<title>Esign, hét creatieve digital agency | Esign</title>', 'meta');
+    }
+
+    /** @test */
+    public function it_will_use_the_app_name_if_no_title_has_been_set()
+    {
+        $this->assertSeeInView('<title>Esign</title>', 'meta');
     }
 
     /** @test */

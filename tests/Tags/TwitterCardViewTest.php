@@ -18,7 +18,13 @@ class TwitterCardViewTest extends TestCase
     public function it_can_render_a_title()
     {
         TwitterCard::setTitle('Esign, hét creatieve digital agency');
-        $this->assertSeeInView('<meta name="twitter:title" content="Esign, hét creatieve digital agency">', 'twitter-card');
+        $this->assertSeeInView('<meta name="twitter:title" content="Esign, hét creatieve digital agency | Esign">', 'twitter-card');
+    }
+
+    /** @test */
+    public function it_will_use_the_app_name_if_no_title_has_been_set()
+    {
+        $this->assertSeeInView('<meta name="twitter:title" content="Esign">', 'twitter-card');
     }
 
     /** @test */

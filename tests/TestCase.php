@@ -4,11 +4,17 @@ namespace Esign\Seo\Tests;
 
 use Esign\Seo\SeoServiceProvider;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
+use Illuminate\Support\Facades\Config;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
 {
     use InteractsWithViews;
+
+    protected function getEnvironmentSetUp($app)
+    {
+        Config::set('app.name', 'Esign');
+    }
 
     protected function getPackageProviders($app)
     {

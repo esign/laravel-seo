@@ -20,7 +20,7 @@ class SeoTest extends TestCase
     {
         Seo::setTitle('Esign, hét creatieve digital agency');
 
-        $this->assertEqualsMany('Esign, hét creatieve digital agency', [
+        $this->assertEqualsMany('Esign, hét creatieve digital agency | Esign', [
             Meta::getTitle(),
             OpenGraph::getTitle(),
             TwitterCard::getTitle(),
@@ -71,13 +71,13 @@ class SeoTest extends TestCase
     /** @test */
     public function it_can_do_stuff_conditionally()
     {
-        Seo::when(true, fn (BaseSeo $seo) => $seo->setTitle('Title A'));
-        Seo::when(false, fn (BaseSeo $seo) => $seo->setTitle('Title B'));
+        Seo::when(true, fn (BaseSeo $seo) => $seo->setDescription('Title A'));
+        Seo::when(false, fn (BaseSeo $seo) => $seo->setDescription('Title B'));
 
         $this->assertEqualsMany('Title A', [
-            Meta::getTitle(),
-            OpenGraph::getTitle(),
-            TwitterCard::getTitle(),
+            Meta::getDescription(),
+            OpenGraph::getDescription(),
+            TwitterCard::getDescription(),
         ]);
     }
 
@@ -113,25 +113,25 @@ class SeoTest extends TestCase
     /** @test */
     public function it_can_pass_a_callback_to_the_meta_tag()
     {
-        Seo::meta(fn (MetaTag $meta) => $meta->setTitle('Title A'));
+        Seo::meta(fn (MetaTag $meta) => $meta->setDescription('Description A'));
 
-        $this->assertEquals('Title A', Meta::getTitle());
+        $this->assertEquals('Description A', Meta::getDescription());
     }
 
     /** @test */
     public function it_can_pass_a_callback_to_the_opengraph_tag()
     {
-        Seo::og(fn (OpenGraphTag $openGraph) => $openGraph->setTitle('Title A'));
+        Seo::og(fn (OpenGraphTag $openGraph) => $openGraph->setDescription('Description A'));
 
-        $this->assertEquals('Title A', OpenGraph::getTitle());
+        $this->assertEquals('Description A', OpenGraph::getDescription());
     }
 
     /** @test */
     public function it_can_pass_a_callback_to_the_twitter_card_tag()
     {
-        Seo::twitter(fn (TwitterCardTag $twitterCard) => $twitterCard->setTitle('Title A'));
+        Seo::twitter(fn (TwitterCardTag $twitterCard) => $twitterCard->setDescription('Description A'));
 
-        $this->assertEquals('Title A', TwitterCard::getTitle());
+        $this->assertEquals('Description A', TwitterCard::getDescription());
     }
 
     /** @test */
@@ -141,7 +141,7 @@ class SeoTest extends TestCase
 
         Seo::setSeoAble($post);
 
-        $this->assertEquals('Esign, hét creatieve digital agency', Meta::getTitle());
+        $this->assertEquals('Esign, hét creatieve digital agency | Esign', Meta::getTitle());
         $this->assertEquals('Esign helpt jouw merk met zijn online aanwezigheid ...', Meta::getDescription());
         $this->assertEquals('https://esign.eu/en', Meta::getUrl());
         $this->assertEquals('https://esign.eu/share-image.jpg', Meta::getImage());
@@ -160,7 +160,7 @@ class SeoTest extends TestCase
 
         Seo::setSeoAble($post);
 
-        $this->assertEquals('My Post Title', Meta::getTitle());
+        $this->assertEquals('My Post Title | Esign', Meta::getTitle());
         $this->assertEquals('My Post Body', Meta::getDescription());
         $this->assertNull(Meta::getImage());
         $this->assertEquals('http://localhost', Meta::getUrl());

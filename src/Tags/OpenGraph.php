@@ -33,6 +33,11 @@ class OpenGraph
         return $this->set('title', $title);
     }
 
+    public function setTitleAttribute(?string $title): ?string
+    {
+        return sprintf('%s | %s', $title, config('app.name'));
+    }
+
     public function getTitle(): ?string
     {
         return $this->get('title', config('app.name'));

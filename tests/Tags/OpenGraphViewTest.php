@@ -25,7 +25,13 @@ class OpenGraphViewTest extends TestCase
     public function it_can_render_a_title()
     {
         OpenGraph::setTitle('Esign, hét creatieve digital agency');
-        $this->assertSeeInView('<meta property="og:title" content="Esign, hét creatieve digital agency">', 'open-graph');
+        $this->assertSeeInView('<meta property="og:title" content="Esign, hét creatieve digital agency | Esign">', 'open-graph');
+    }
+
+    /** @test */
+    public function it_will_use_the_app_name_if_no_title_has_been_set()
+    {
+        $this->assertSeeInView('<meta property="og:title" content="Esign">', 'open-graph');
     }
 
     /** @test */

@@ -106,11 +106,25 @@ use Esign\Seo\Tags\Meta as EsignMeta;
 
 class Meta extends EsignMeta
 {
-    public function setTitleAttribute(?string $value): string
+    public function setDescriptionAttribute(?string $value): string
     {
-        return $value ' - Suffix';
+        return (string) Str::limit($value, 160, '');
     }
 }
+```
+
+A `setTitleAttribute` has been included on all traits that will suffix your title with your app name:
+```php
+public function setTitleAttribute(?string $title): ?string
+{
+    return sprintf('%s | %s', $title, config('app.name'));
+}
+```
+
+To bypass a mutator while setting an attribute, you may use the `setRaw` method:
+```php
+Seo::setTitle('My Normal Seo Title'); // <title>My Normal Seo Title | Esign</title>
+Seo::setRaw('title', 'My Raw Seo Title'); // <title>My Raw Seo Title</title>
 ```
 
 
