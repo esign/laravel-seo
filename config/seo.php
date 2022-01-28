@@ -15,5 +15,6 @@ return [
         'meta' => \Esign\Seo\Tags\Meta::class,
         'open_graph' => \Esign\Seo\Tags\OpenGraph::class,
         'twitter_card' => \Esign\Seo\Tags\TwitterCard::class,
+        'json_ld' => \Esign\Seo\Tags\JsonLd::class,
     ],
 ];

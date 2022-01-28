@@ -18,7 +18,8 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^8.0|^9.0"
+        "illuminate/support": "^8.0|^9.0",
+        "spatie/schema-org": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",

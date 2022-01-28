@@ -3,6 +3,7 @@
 namespace Esign\Seo;
 
 use Esign\Seo\Contracts\SeoAble;
+use Esign\Seo\Tags\JsonLd;
 use Esign\Seo\Tags\Meta;
 use Esign\Seo\Tags\OpenGraph;
 use Esign\Seo\Tags\TwitterCard;
@@ -101,5 +102,18 @@ class Seo
         }
 
         return $twitterCard;
+    }
+
+    public function jsonLd(?callable $callback = null): self | JsonLd
+    {
+        $jsonLd = app('seo.json-ld');
+
+        if ($callback) {
+            $callback($jsonLd);
+
+            return $this;
+        }
+
+        return $jsonLd;
     }
 }

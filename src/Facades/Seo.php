@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static self|\Esign\Seo\Tags\Meta meta(?callable $callback = null)
  * @method static self|\Esign\Seo\Tags\OpenGraph og(?callable $callback = null)
  * @method static self|\Esign\Seo\Tags\TwitterCard twitter(?callable $callback = null)
+ * @method static self|\Esign\Seo\Tags\JsonLd jsonLd(?callable $callback = null)
  *
  * @see \Esign\Seo\Seo
  */

@@ -36,6 +36,7 @@ return [
         'meta' => \Esign\Seo\Tags\Meta::class,
         'open_graph' => \Esign\Seo\Tags\OpenGraph::class,
         'twitter_card' => \Esign\Seo\Tags\TwitterCard::class,
+        'json_ld' => \Esign\Seo\Tags\JsonLd::class,
     ],
 ];
 ```
@@ -163,6 +164,7 @@ Seo::setSeoAble(SeoAble $seoAble)
 Seo::meta();
 Seo::og();
 Seo::twitter();
+Seo::jsonLd();
 ```
 ### Meta API
 ```php
@@ -249,6 +251,27 @@ TwitterCard::setRaw(string $key, mixed $value);
 TwitterCard::setType(?string $type);
 TwitterCard::setDescription(?string $description);
 TwitterCard::setImage(?string $image);
+```
+
+### JsonLd API
+```php
+use Esign\Seo\Facades\Tags\JsonLd;
+
+// Conditions
+JsonLd::when(mixed $value, callable $callback, callable|null $default);
+JsonLd::whenEmpty(string $key, callable $callback, callable|null $default);
+JsonLd::unless(mixed $value, callable $callback, callable|null $default);
+
+// Getting attributes
+JsonLd::get(string $key, mixed $default = null);
+JsonLd::has(string $key);
+JsonLd::getTypes();
+
+// Setting attributes
+JsonLd::set(string $key, mixed $value);
+JsonLd::setRaw(string $key, mixed $value);
+JsonLd::addType(iterable|Spatie\SchemaOrg\Type $type);
+JsonLd::setTypes(array $types);
 ```
 
 This package also ships with a nice helper method that you may use as an alternative to the facade:

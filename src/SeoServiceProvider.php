@@ -3,6 +3,7 @@
 namespace Esign\Seo;
 
 use Esign\Seo\Exceptions\InvalidConfiguration;
+use Esign\Seo\Tags\JsonLd;
 use Esign\Seo\Tags\Meta;
 use Esign\Seo\Tags\OpenGraph;
 use Esign\Seo\Tags\TwitterCard;
@@ -28,11 +29,13 @@ class SeoServiceProvider extends ServiceProvider
         $this->app->singleton('seo.meta', config('seo.tags.meta'));
         $this->app->singleton('seo.open-graph', config('seo.tags.open_graph'));
         $this->app->singleton('seo.twitter-card', config('seo.tags.twitter_card'));
+        $this->app->singleton('seo.json-ld', config('seo.tags.json_ld'));
 
         $this->guardAgainstInvalidClassDefinition(Seo::class, app('seo'));
         $this->guardAgainstInvalidClassDefinition(Meta::class, app('seo.meta'));
         $this->guardAgainstInvalidClassDefinition(OpenGraph::class, app('seo.open-graph'));
         $this->guardAgainstInvalidClassDefinition(TwitterCard::class, app('seo.twitter-card'));
+        $this->guardAgainstInvalidClassDefinition(JsonLd::class, app('seo.json-ld'));
     }
 
     protected function configPath(): string
