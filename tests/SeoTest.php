@@ -135,11 +135,11 @@ class SeoTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_an_seoable()
+    public function it_can_set_an_seo_contract()
     {
         $post = new Post();
 
-        Seo::setSeoAble($post);
+        Seo::set($post);
 
         $this->assertEquals('Esign, hét creatieve digital agency | Esign', Meta::getTitle());
         $this->assertEquals('Esign helpt jouw merk met zijn online aanwezigheid ...', Meta::getDescription());
@@ -152,13 +152,13 @@ class SeoTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_an_seoable_with_defaults()
+    public function it_can_set_an_seo_contract_with_defaults()
     {
         $post = new PostWithDefaults();
         $post->title = 'My Post Title';
         $post->body = 'My Post Body';
 
-        Seo::setSeoAble($post);
+        Seo::set($post);
 
         $this->assertEquals('My Post Title | Esign', Meta::getTitle());
         $this->assertEquals('My Post Body', Meta::getDescription());

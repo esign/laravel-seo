@@ -129,15 +129,15 @@ Seo::setRaw('title', 'My Raw Seo Title'); // <title>My Raw Seo Title</title>
 ```
 
 
-### Making models SeoAble
-To make your models SeoAble, you may implement the `Esign\Seo\Contracts\SeoAble` interface.
-A handy trait `Esign\Seo\Concerns\HasSeoDefaults` has been included that can quickly help you set up some seo defaults for your model.
+### Setting SEO for models
+To set SEO for models, you may implement the `Esign\Seo\Contracts\SeoContract` interface.
+A handy trait `Esign\Seo\Concerns\HasSeoDefaults` has been included that can quickly help you set up some SEO defaults for your model.
 This however is not necessary, you could also implement the methods yourself:
 ```php
 use Esign\Seo\Concerns\HasSeoDefaults;
-use Esign\Seo\Contracts\SeoAble;
+use Esign\Seo\Contracts\SeoContract;
 
-class Post extends Model implements SeoAble
+class Post extends Model implements SeoContract
 {
     use HasSeoDefaults;
 
@@ -148,10 +148,26 @@ class Post extends Model implements SeoAble
 }
 ```
 
+You may set this `SeoContract` using the `set` method:
+```php
+use Esign\Seo\Facades\Seo;
+
+class PostController extends Controller
+{
+    public function show(Post $post)
+    {
+        Seo::set($post);
+
+        return view('posts.show', compact('post'));
+    }
+}
+```
+
+
 ### Seo API
 ```php
 use Esign\Seo\Facades\Seo;
-use Esign\Seo\Contracts\SeoAble;
+use Esign\Seo\Contracts\SeoContract;
 
 Seo::when(mixed $value, callable $callback, callable|null $default);
 Seo::unless(mixed $value, callable $callback, callable|null $default);
@@ -160,7 +176,7 @@ Seo::setDescription(?string $title);
 Seo::setUrl(?string $title);
 Seo::setImage(?string $title);
 Seo::setAlternateUrls(array $alternateUrls);
-Seo::setSeoAble(SeoAble $seoAble)
+Seo::set(SeoContract $seoContract)
 Seo::meta();
 Seo::og();
 Seo::twitter();

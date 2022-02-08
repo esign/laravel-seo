@@ -2,10 +2,10 @@
 
 namespace Esign\Seo\Tests\Support\Models;
 
-use Esign\Seo\Contracts\SeoAble;
+use Esign\Seo\Contracts\SeoContract;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model implements SeoAble
+class Post extends Model implements SeoContract
 {
     public $timestamps = false;
     protected $guarded = [];
