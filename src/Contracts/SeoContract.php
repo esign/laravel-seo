@@ -2,7 +2,7 @@
 
 namespace Esign\Seo\Contracts;
 
-interface SeoAble
+interface SeoContract
 {
     public function getSeoTitle(): ?string;
 

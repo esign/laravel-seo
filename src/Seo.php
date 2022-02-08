@@ -2,7 +2,7 @@
 
 namespace Esign\Seo;
 
-use Esign\Seo\Contracts\SeoAble;
+use Esign\Seo\Contracts\SeoContract;
 use Esign\Seo\Tags\JsonLd;
 use Esign\Seo\Tags\Meta;
 use Esign\Seo\Tags\OpenGraph;
@@ -55,14 +55,14 @@ class Seo
         return $this;
     }
 
-    public function setSeoAble(SeoAble $seoAble): self
+    public function set(SeoContract $seoContract): self
     {
         return $this
-            ->setTitle($seoAble->getSeoTitle())
-            ->setDescription($seoAble->getSeoDescription())
-            ->setImage($seoAble->getSeoImage())
-            ->setUrl($seoAble->getSeoUrl())
-            ->setAlternateUrls($seoAble->getSeoAlternateUrls());
+            ->setTitle($seoContract->getSeoTitle())
+            ->setDescription($seoContract->getSeoDescription())
+            ->setImage($seoContract->getSeoImage())
+            ->setUrl($seoContract->getSeoUrl())
+            ->setAlternateUrls($seoContract->getSeoAlternateUrls());
     }
 
     public function meta(?callable $callback = null): self | Meta
