@@ -19,7 +19,7 @@ Next up, you can publish the configuration file:
 php artisan vendor:publish --provider="Esign\Seo\SeoServiceProvider" --tag="config"
 ```
 
-The config file will be published as `config/redirects.php` with the following content:
+The config file will be published as `config/seo.php` with the following content:
 ```php
 return [
     /**
