@@ -1,13 +1,14 @@
 {
     "name": "esign/laravel-seo",
-    "description": "A laravel package to easily get going with SEO.",
+    "description": "Manage SEO tags within your Laravel application",
     "keywords": [
         "esign",
         "laravel-seo",
         "seo",
         "open graph",
         "twitter card",
-        "meta"
+        "meta",
+        "json ld"
     ],
     "license": "MIT",
     "authors": [
