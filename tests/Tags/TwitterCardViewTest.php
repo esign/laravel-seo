@@ -40,4 +40,19 @@ class TwitterCardViewTest extends TestCase
         TwitterCard::setImage('https://esign.eu/share-image.jpg');
         $this->assertSeeInView('<meta name="twitter:image" content="https://esign.eu/share-image.jpg">', 'twitter-card');
     }
+
+    /** @test */
+    public function it_wont_render_if_given_falsy_values()
+    {
+        TwitterCard::setType(null)
+            ->setTitle(null)
+            ->setDescription(null)
+            ->setImage(null);
+
+            // Some attributes will still be visible due to defaults.
+            $this->assertSeeInView('<meta name="twitter:card"', 'twitter-card');
+            $this->assertSeeInView('<meta name="twitter:title"', 'twitter-card');
+            $this->assertDontSeeInView('<meta name="twitter:description"', 'twitter-card');
+            $this->assertDontSeeInView('<meta name="twitter:image"', 'twitter-card');
+    }
 }

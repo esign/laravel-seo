@@ -36,4 +36,13 @@ class TestCase extends BaseTestCase
         $view = $this->view("seo::$view");
         $view->assertSee($value, $escaped);
     }
+
+    protected function assertDontSeeInView(
+        string $value,
+        string $view = 'seo',
+        bool $escaped = false
+    ): void {
+        $view = $this->view("seo::$view");
+        $view->assertDontSee($value, $escaped);
+    }
 }

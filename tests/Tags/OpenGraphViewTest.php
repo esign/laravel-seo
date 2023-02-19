@@ -54,4 +54,23 @@ class OpenGraphViewTest extends TestCase
         OpenGraph::setImage('https://esign.eu/share-image.jpg');
         $this->assertSeeInView('<meta property="og:image" content="https://esign.eu/share-image.jpg">', 'open-graph');
     }
+
+    /** @test */
+    public function it_wont_render_if_given_falsy_values()
+    {
+        OpenGraph::setType(null)
+            ->setSiteName(null)
+            ->setTitle(null)
+            ->setDescription(null)
+            ->setImage(null)
+            ->setUrl(null);
+
+            // Some attributes will still be visible due to defaults.
+            $this->assertSeeInView('<meta property="og:type"', 'open-graph');
+            $this->assertSeeInView('<meta property="og:site_name"', 'open-graph');
+            $this->assertSeeInView('<meta property="og:title"', 'open-graph');
+            $this->assertSeeInView('<meta property="og:url"', 'open-graph');
+            $this->assertDontSeeInView('<meta property="og:description"', 'open-graph');
+            $this->assertDontSeeInView('<meta property="og:image"', 'open-graph');
+    }
 }
