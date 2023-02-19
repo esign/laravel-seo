@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static bool has(string $key)
  * @method static self setType(?string $type)
  * @method static ?string getType()
+ * @method static self setTitle(?string $title)
  * @method static ?string getTitle()
  * @method static self setDescription(?string $description)
  * @method static ?string getDescription()
