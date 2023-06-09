@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static self setRobots(?string $robots)
  * @method static ?string getRobots()
  * @method static self setAlternateUrls(array $alternateUrls)
+ * @method static self addAlternateUrls(array $alternateUrls)
  * @method static ?string getAlternateUrls()
  *
  * @see \Esign\Seo\Tags\Meta

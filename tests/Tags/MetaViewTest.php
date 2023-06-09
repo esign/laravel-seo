@@ -64,6 +64,16 @@ class MetaViewTest extends TestCase
     }
 
     /** @test */
+    public function it_can_add_alternate_urls()
+    {
+        Meta::setAlternateUrls(['nl' => 'https://esign.eu/nl']);
+        Meta::addAlternateUrls(['en' => 'https://esign.eu/en']);
+
+        $this->assertSeeInView('<link rel="alternate" hreflang="nl" href="https://esign.eu/nl">', 'meta');
+        $this->assertSeeInView('<link rel="alternate" hreflang="en" href="https://esign.eu/en">', 'meta');
+    }
+
+    /** @test */
     public function it_wont_render_if_given_falsy_values()
     {
         Meta::setTitle(null)

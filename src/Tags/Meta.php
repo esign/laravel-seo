@@ -88,6 +88,14 @@ class Meta
         return $this->set('alternateUrls', $alternateUrls);
     }
 
+    public function addAlternateUrls(array $alternateUrls): self
+    {
+        return $this->setAlternateUrls(array_merge(
+            $this->getAlternateUrls(),
+            $alternateUrls,
+        ));
+    }
+
     public function getAlternateUrls(): array
     {
         return $this->get('alternateUrls', []);
