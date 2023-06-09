@@ -218,6 +218,7 @@ Meta::setPrev(?string $prev);
 Meta::setNext(?string $next);
 Meta::setRobots(?string $robots);
 Meta::setAlternateUrls(array $alternateUrls);
+Meta::addAlternateUrls(array $alternateUrls);
 ```
 ### Open Graph API
 ```php
