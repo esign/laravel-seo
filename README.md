@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/esign/laravel-seo.svg?style=flat-square)](https://packagist.org/packages/esign/laravel-seo)
 [![Total Downloads](https://img.shields.io/packagist/dt/esign/laravel-seo.svg?style=flat-square)](https://packagist.org/packages/esign/laravel-seo)
-[![Github Workflow Status](https://img.shields.io/github/workflow/status/esign/laravel-seo/run-tests?label=tests)](https://github.com/esign/laravel-seo/actions)
+![GitHub Actions](https://github.com/esign/laravel-seo/actions/workflows/main.yml/badge.svg)
 
 This package allows you to render SEO related HTML tags that can be set from anywhere in your application.
 Currently Meta, Open Graph, Twitter Card and JsonLD are supported.
