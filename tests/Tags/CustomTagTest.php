@@ -2,6 +2,7 @@
 
 namespace Esign\Seo\Tests\Tags;
 
+use PHPUnit\Framework\Attributes\Test;
 use Esign\Seo\Exceptions\InvalidConfiguration;
 use Esign\Seo\SeoServiceProvider;
 use Esign\Seo\Tests\Support\CustomMetaTag;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Config;
 
 class CustomTagTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_use_a_custom_tag()
     {
         Config::set('seo.tags.meta', CustomMetaTag::class);
@@ -21,7 +22,7 @@ class CustomTagTest extends TestCase
         $this->assertInstanceOf(CustomMetaTag::class, app('seo.meta'));
     }
 
-    /** @test */
+    #[Test]
     public function it_will_throw_an_exception_when_the_configured_tag_does_not_extend_the_default_class()
     {
         Config::set('seo.tags.meta', InvalidMetaTag::class);

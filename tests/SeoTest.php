@@ -2,6 +2,7 @@
 
 namespace Esign\Seo\Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Esign\Seo\Facades\Seo;
 use Esign\Seo\Facades\Tags\Meta;
 use Esign\Seo\Facades\Tags\OpenGraph;
@@ -15,7 +16,7 @@ use Esign\Seo\Tests\Support\Models\PostWithDefaults;
 
 class SeoTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_set_the_title()
     {
         Seo::setTitle('Esign, hét creatieve digital agency');
@@ -27,7 +28,7 @@ class SeoTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_the_description()
     {
         Seo::setDescription('Esign helpt jouw merk met zijn online aanwezigheid ...');
@@ -39,7 +40,7 @@ class SeoTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_the_image()
     {
         Seo::setImage('https://esign.eu/share-image.jpg');
@@ -51,7 +52,7 @@ class SeoTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_the_url()
     {
         Seo::setUrl('https://esign.eu');
@@ -62,13 +63,13 @@ class SeoTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_use_the_helper_method()
     {
         $this->assertInstanceOf(BaseSeo::class, seo());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_do_stuff_conditionally()
     {
         Seo::when(true, fn (BaseSeo $seo) => $seo->setDescription('Title A'));
@@ -81,7 +82,7 @@ class SeoTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_alternate_urls()
     {
         Seo::setAlternateUrls(['nl' => 'https://esign.eu/nl', 'en' => 'https://esign.eu/en']);
@@ -92,25 +93,25 @@ class SeoTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function it_can_get_the_meta_tag()
     {
         $this->assertInstanceOf(MetaTag::class, Seo::meta());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_get_the_opengraph_tag()
     {
         $this->assertInstanceOf(OpenGraphTag::class, Seo::og());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_get_the_twitter_card_tag()
     {
         $this->assertInstanceOf(TwitterCardTag::class, Seo::twitter());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_pass_a_callback_to_the_meta_tag()
     {
         Seo::meta(fn (MetaTag $meta) => $meta->setDescription('Description A'));
@@ -118,7 +119,7 @@ class SeoTest extends TestCase
         $this->assertEquals('Description A', Meta::getDescription());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_pass_a_callback_to_the_opengraph_tag()
     {
         Seo::og(fn (OpenGraphTag $openGraph) => $openGraph->setDescription('Description A'));
@@ -126,7 +127,7 @@ class SeoTest extends TestCase
         $this->assertEquals('Description A', OpenGraph::getDescription());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_pass_a_callback_to_the_twitter_card_tag()
     {
         Seo::twitter(fn (TwitterCardTag $twitterCard) => $twitterCard->setDescription('Description A'));
@@ -134,7 +135,7 @@ class SeoTest extends TestCase
         $this->assertEquals('Description A', TwitterCard::getDescription());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_an_seo_contract()
     {
         $post = new Post();
@@ -151,7 +152,7 @@ class SeoTest extends TestCase
         ], Meta::getAlternateUrls());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_an_seo_contract_with_defaults()
     {
         $post = new PostWithDefaults();

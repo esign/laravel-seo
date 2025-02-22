@@ -2,46 +2,47 @@
 
 namespace Esign\Seo\Tests\Tags;
 
+use PHPUnit\Framework\Attributes\Test;
 use Esign\Seo\Facades\Tags\TwitterCard;
 use Esign\Seo\Tests\TestCase;
 
 class TwitterCardViewTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_render_a_type()
     {
         TwitterCard::setType('summary');
         $this->assertSeeInView('<meta name="twitter:card" content="summary">', 'twitter-card');
     }
 
-    /** @test */
+    #[Test]
     public function it_can_render_a_title()
     {
         TwitterCard::setTitle('Esign, hét creatieve digital agency');
         $this->assertSeeInView('<meta name="twitter:title" content="Esign, hét creatieve digital agency | Esign">', 'twitter-card');
     }
 
-    /** @test */
+    #[Test]
     public function it_will_use_the_app_name_if_no_title_has_been_set()
     {
         $this->assertSeeInView('<meta name="twitter:title" content="Esign">', 'twitter-card');
     }
 
-    /** @test */
+    #[Test]
     public function it_can_render_a_description()
     {
         TwitterCard::setDescription('Esign helpt jouw merk met zijn online aanwezigheid ...');
         $this->assertSeeInView('<meta name="twitter:description" content="Esign helpt jouw merk met zijn online aanwezigheid ...">', 'twitter-card');
     }
 
-    /** @test */
+    #[Test]
     public function it_can_render_an_image()
     {
         TwitterCard::setImage('https://esign.eu/share-image.jpg');
         $this->assertSeeInView('<meta name="twitter:image" content="https://esign.eu/share-image.jpg">', 'twitter-card');
     }
 
-    /** @test */
+    #[Test]
     public function it_wont_render_if_given_falsy_values()
     {
         TwitterCard::setType(null)

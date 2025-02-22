@@ -2,20 +2,21 @@
 
 namespace Esign\Seo\Tests\Tags;
 
+use PHPUnit\Framework\Attributes\Test;
 use Esign\Seo\Facades\Tags\JsonLd;
 use Esign\Seo\Tests\TestCase;
 use Spatie\SchemaOrg\Schema;
 
 class JsonLdViewTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_add_a_type()
     {
         JsonLd::addType(Schema::localBusiness()->name('Esign')->email('hello@esign.eu'));
         $this->assertSeeInView('<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"LocalBusiness","name":"Esign","email":"hello@esign.eu"}</script>', 'json-ld');
     }
 
-    /** @test */
+    #[Test]
     public function it_can_add_multiple_types()
     {
         JsonLd::addType([
@@ -26,7 +27,7 @@ class JsonLdViewTest extends TestCase
         $this->assertSeeInView('<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","headline":"My article","description":"My article description"}</script>', 'json-ld');
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_types()
     {
         JsonLd::setTypes([

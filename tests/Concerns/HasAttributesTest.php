@@ -2,11 +2,12 @@
 
 namespace Esign\Seo\Tests\Concerns;
 
+use PHPUnit\Framework\Attributes\Test;
 use Esign\Seo\Tests\TestCase;
 
 class HasAttributesTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_set_an_attribute()
     {
         $testTag = new TestTag();
@@ -15,7 +16,7 @@ class HasAttributesTest extends TestCase
         $this->assertEquals('value', $testTag->get('key'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_get_an_attribute()
     {
         $testTag = new TestTag();
@@ -24,7 +25,7 @@ class HasAttributesTest extends TestCase
         $this->assertEquals('value', $testTag->get('key'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_return_null_if_getting_an_attribute_that_has_not_been_set()
     {
         $testTag = new TestTag();
@@ -32,7 +33,7 @@ class HasAttributesTest extends TestCase
         $this->assertNull($testTag->get('key'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_return_a_default_value_if_given_one()
     {
         $testTag = new TestTag();
@@ -40,7 +41,7 @@ class HasAttributesTest extends TestCase
         $this->assertEquals('default value', $testTag->get('key', 'default value'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_mutate_an_attribute()
     {
         $testTag = new TestTag();
@@ -49,7 +50,7 @@ class HasAttributesTest extends TestCase
         $this->assertEquals('value - Suffix', $testTag->get('title'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_set_a_raw_attribute()
     {
         $testTag = new TestTag();
@@ -58,7 +59,7 @@ class HasAttributesTest extends TestCase
         $this->assertEquals('value', $testTag->get('title'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_check_if_an_attribute_exists()
     {
         $testTag = new TestTag();
@@ -68,7 +69,7 @@ class HasAttributesTest extends TestCase
         $this->assertFalse($testTag->has('keyB'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_do_stuff_conditionally()
     {
         $testTag = new TestTag();
@@ -78,7 +79,7 @@ class HasAttributesTest extends TestCase
         $this->assertEquals('value A', $testTag->get('key'));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_do_stuff_conditionally_when_empty()
     {
         $testTag = new TestTag();
