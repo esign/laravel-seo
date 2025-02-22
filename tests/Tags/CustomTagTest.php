@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Config;
 class CustomTagTest extends TestCase
 {
     #[Test]
-    public function it_can_use_a_custom_tag()
+    public function it_can_use_a_custom_tag(): void
     {
         Config::set('seo.tags.meta', CustomMetaTag::class);
 
@@ -23,7 +23,7 @@ class CustomTagTest extends TestCase
     }
 
     #[Test]
-    public function it_will_throw_an_exception_when_the_configured_tag_does_not_extend_the_default_class()
+    public function it_will_throw_an_exception_when_the_configured_tag_does_not_extend_the_default_class(): void
     {
         Config::set('seo.tags.meta', InvalidMetaTag::class);
 

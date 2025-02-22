@@ -10,14 +10,14 @@ use Spatie\SchemaOrg\Schema;
 class JsonLdViewTest extends TestCase
 {
     #[Test]
-    public function it_can_add_a_type()
+    public function it_can_add_a_type(): void
     {
         JsonLd::addType(Schema::localBusiness()->name('Esign')->email('hello@esign.eu'));
         $this->assertSeeInView('<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"LocalBusiness","name":"Esign","email":"hello@esign.eu"}</script>', 'json-ld');
     }
 
     #[Test]
-    public function it_can_add_multiple_types()
+    public function it_can_add_multiple_types(): void
     {
         JsonLd::addType([
             Schema::localBusiness()->name('Esign')->email('hello@esign.eu'),
@@ -28,7 +28,7 @@ class JsonLdViewTest extends TestCase
     }
 
     #[Test]
-    public function it_can_set_types()
+    public function it_can_set_types(): void
     {
         JsonLd::setTypes([
             Schema::localBusiness()->name('Esign')->email('hello@esign.eu'),

@@ -8,7 +8,7 @@ use Esign\Seo\Tests\TestCase;
 class HasAttributesTest extends TestCase
 {
     #[Test]
-    public function it_can_set_an_attribute()
+    public function it_can_set_an_attribute(): void
     {
         $testTag = new TestTag();
         $testTag->set('key', 'value');
@@ -17,7 +17,7 @@ class HasAttributesTest extends TestCase
     }
 
     #[Test]
-    public function it_can_get_an_attribute()
+    public function it_can_get_an_attribute(): void
     {
         $testTag = new TestTag();
         $testTag->set('key', 'value');
@@ -26,7 +26,7 @@ class HasAttributesTest extends TestCase
     }
 
     #[Test]
-    public function it_can_return_null_if_getting_an_attribute_that_has_not_been_set()
+    public function it_can_return_null_if_getting_an_attribute_that_has_not_been_set(): void
     {
         $testTag = new TestTag();
 
@@ -34,7 +34,7 @@ class HasAttributesTest extends TestCase
     }
 
     #[Test]
-    public function it_can_return_a_default_value_if_given_one()
+    public function it_can_return_a_default_value_if_given_one(): void
     {
         $testTag = new TestTag();
 
@@ -42,7 +42,7 @@ class HasAttributesTest extends TestCase
     }
 
     #[Test]
-    public function it_can_mutate_an_attribute()
+    public function it_can_mutate_an_attribute(): void
     {
         $testTag = new TestTag();
         $testTag->set('title', 'value');
@@ -51,7 +51,7 @@ class HasAttributesTest extends TestCase
     }
 
     #[Test]
-    public function it_can_set_a_raw_attribute()
+    public function it_can_set_a_raw_attribute(): void
     {
         $testTag = new TestTag();
         $testTag->setRaw('title', 'value');
@@ -60,7 +60,7 @@ class HasAttributesTest extends TestCase
     }
 
     #[Test]
-    public function it_can_check_if_an_attribute_exists()
+    public function it_can_check_if_an_attribute_exists(): void
     {
         $testTag = new TestTag();
         $testTag->set('keyA', 'value');
@@ -70,7 +70,7 @@ class HasAttributesTest extends TestCase
     }
 
     #[Test]
-    public function it_can_do_stuff_conditionally()
+    public function it_can_do_stuff_conditionally(): void
     {
         $testTag = new TestTag();
         $testTag->when(true, fn (TestTag $testTag) => $testTag->set('key', 'value A'));
@@ -80,7 +80,7 @@ class HasAttributesTest extends TestCase
     }
 
     #[Test]
-    public function it_can_do_stuff_conditionally_when_empty()
+    public function it_can_do_stuff_conditionally_when_empty(): void
     {
         $testTag = new TestTag();
         $testTag->whenEmpty('key', fn (TestTag $testTag) => $testTag->set('key', 'value A'));

@@ -17,7 +17,7 @@ use Esign\Seo\Tests\Support\Models\PostWithDefaults;
 class SeoTest extends TestCase
 {
     #[Test]
-    public function it_can_set_the_title()
+    public function it_can_set_the_title(): void
     {
         Seo::setTitle('Esign, hét creatieve digital agency');
 
@@ -29,7 +29,7 @@ class SeoTest extends TestCase
     }
 
     #[Test]
-    public function it_can_set_the_description()
+    public function it_can_set_the_description(): void
     {
         Seo::setDescription('Esign helpt jouw merk met zijn online aanwezigheid ...');
 
@@ -41,7 +41,7 @@ class SeoTest extends TestCase
     }
 
     #[Test]
-    public function it_can_set_the_image()
+    public function it_can_set_the_image(): void
     {
         Seo::setImage('https://esign.eu/share-image.jpg');
 
@@ -53,7 +53,7 @@ class SeoTest extends TestCase
     }
 
     #[Test]
-    public function it_can_set_the_url()
+    public function it_can_set_the_url(): void
     {
         Seo::setUrl('https://esign.eu');
 
@@ -64,13 +64,13 @@ class SeoTest extends TestCase
     }
 
     #[Test]
-    public function it_can_use_the_helper_method()
+    public function it_can_use_the_helper_method(): void
     {
         $this->assertInstanceOf(BaseSeo::class, seo());
     }
 
     #[Test]
-    public function it_can_do_stuff_conditionally()
+    public function it_can_do_stuff_conditionally(): void
     {
         Seo::when(true, fn (BaseSeo $seo) => $seo->setDescription('Title A'));
         Seo::when(false, fn (BaseSeo $seo) => $seo->setDescription('Title B'));
@@ -83,7 +83,7 @@ class SeoTest extends TestCase
     }
 
     #[Test]
-    public function it_can_set_alternate_urls()
+    public function it_can_set_alternate_urls(): void
     {
         Seo::setAlternateUrls(['nl' => 'https://esign.eu/nl', 'en' => 'https://esign.eu/en']);
 
@@ -94,25 +94,25 @@ class SeoTest extends TestCase
     }
 
     #[Test]
-    public function it_can_get_the_meta_tag()
+    public function it_can_get_the_meta_tag(): void
     {
         $this->assertInstanceOf(MetaTag::class, Seo::meta());
     }
 
     #[Test]
-    public function it_can_get_the_opengraph_tag()
+    public function it_can_get_the_opengraph_tag(): void
     {
         $this->assertInstanceOf(OpenGraphTag::class, Seo::og());
     }
 
     #[Test]
-    public function it_can_get_the_twitter_card_tag()
+    public function it_can_get_the_twitter_card_tag(): void
     {
         $this->assertInstanceOf(TwitterCardTag::class, Seo::twitter());
     }
 
     #[Test]
-    public function it_can_pass_a_callback_to_the_meta_tag()
+    public function it_can_pass_a_callback_to_the_meta_tag(): void
     {
         Seo::meta(fn (MetaTag $meta) => $meta->setDescription('Description A'));
 
@@ -120,7 +120,7 @@ class SeoTest extends TestCase
     }
 
     #[Test]
-    public function it_can_pass_a_callback_to_the_opengraph_tag()
+    public function it_can_pass_a_callback_to_the_opengraph_tag(): void
     {
         Seo::og(fn (OpenGraphTag $openGraph) => $openGraph->setDescription('Description A'));
 
@@ -128,7 +128,7 @@ class SeoTest extends TestCase
     }
 
     #[Test]
-    public function it_can_pass_a_callback_to_the_twitter_card_tag()
+    public function it_can_pass_a_callback_to_the_twitter_card_tag(): void
     {
         Seo::twitter(fn (TwitterCardTag $twitterCard) => $twitterCard->setDescription('Description A'));
 
@@ -136,7 +136,7 @@ class SeoTest extends TestCase
     }
 
     #[Test]
-    public function it_can_set_an_seo_contract()
+    public function it_can_set_an_seo_contract(): void
     {
         $post = new Post();
 
@@ -153,7 +153,7 @@ class SeoTest extends TestCase
     }
 
     #[Test]
-    public function it_can_set_an_seo_contract_with_defaults()
+    public function it_can_set_an_seo_contract_with_defaults(): void
     {
         $post = new PostWithDefaults();
         $post->title = 'My Post Title';
