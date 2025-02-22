@@ -14,7 +14,7 @@ use Esign\Seo\Tags\TwitterCard as TwitterCardTag;
 use Esign\Seo\Tests\Support\Models\Post;
 use Esign\Seo\Tests\Support\Models\PostWithDefaults;
 
-class SeoTest extends TestCase
+final class SeoTest extends TestCase
 {
     #[Test]
     public function it_can_set_the_title(): void

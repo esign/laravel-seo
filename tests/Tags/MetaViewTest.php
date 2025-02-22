@@ -6,7 +6,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Esign\Seo\Facades\Tags\Meta;
 use Esign\Seo\Tests\TestCase;
 
-class MetaViewTest extends TestCase
+final class MetaViewTest extends TestCase
 {
     #[Test]
     public function it_can_render_a_title(): void

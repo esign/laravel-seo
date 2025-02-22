@@ -7,7 +7,7 @@ use Esign\Seo\Facades\Tags\JsonLd;
 use Esign\Seo\Tests\TestCase;
 use Spatie\SchemaOrg\Schema;
 
-class JsonLdViewTest extends TestCase
+final class JsonLdViewTest extends TestCase
 {
     #[Test]
     public function it_can_add_a_type(): void

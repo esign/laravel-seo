@@ -5,7 +5,7 @@ namespace Esign\Seo\Tests\Concerns;
 use PHPUnit\Framework\Attributes\Test;
 use Esign\Seo\Tests\TestCase;
 
-class HasAttributesTest extends TestCase
+final class HasAttributesTest extends TestCase
 {
     #[Test]
     public function it_can_set_an_attribute(): void

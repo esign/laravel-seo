@@ -10,7 +10,7 @@ use Esign\Seo\Tests\Support\InvalidMetaTag;
 use Esign\Seo\Tests\TestCase;
 use Illuminate\Support\Facades\Config;
 
-class CustomTagTest extends TestCase
+final class CustomTagTest extends TestCase
 {
     #[Test]
     public function it_can_use_a_custom_tag(): void

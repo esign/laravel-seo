@@ -6,7 +6,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Esign\Seo\Facades\Tags\TwitterCard;
 use Esign\Seo\Tests\TestCase;
 
-class TwitterCardViewTest extends TestCase
+final class TwitterCardViewTest extends TestCase
 {
     #[Test]
     public function it_can_render_a_type(): void

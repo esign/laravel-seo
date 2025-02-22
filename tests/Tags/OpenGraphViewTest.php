@@ -6,7 +6,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Esign\Seo\Facades\Tags\OpenGraph;
 use Esign\Seo\Tests\TestCase;
 
-class OpenGraphViewTest extends TestCase
+final class OpenGraphViewTest extends TestCase
 {
     #[Test]
     public function it_can_render_a_type(): void
