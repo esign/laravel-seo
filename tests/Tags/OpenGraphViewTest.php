@@ -2,61 +2,62 @@
 
 namespace Esign\Seo\Tests\Tags;
 
+use PHPUnit\Framework\Attributes\Test;
 use Esign\Seo\Facades\Tags\OpenGraph;
 use Esign\Seo\Tests\TestCase;
 
-class OpenGraphViewTest extends TestCase
+final class OpenGraphViewTest extends TestCase
 {
-    /** @test */
-    public function it_can_render_a_type()
+    #[Test]
+    public function it_can_render_a_type(): void
     {
         OpenGraph::setType('website');
         $this->assertSeeInView('<meta property="og:type" content="website">', 'open-graph');
     }
 
-    /** @test */
-    public function it_can_render_a_site_name()
+    #[Test]
+    public function it_can_render_a_site_name(): void
     {
         OpenGraph::setSiteName('My fancy website');
         $this->assertSeeInView('<meta property="og:site_name" content="My fancy website">', 'open-graph');
     }
 
-    /** @test */
-    public function it_can_render_a_title()
+    #[Test]
+    public function it_can_render_a_title(): void
     {
         OpenGraph::setTitle('Esign, hét creatieve digital agency');
         $this->assertSeeInView('<meta property="og:title" content="Esign, hét creatieve digital agency | Esign">', 'open-graph');
     }
 
-    /** @test */
-    public function it_will_use_the_app_name_if_no_title_has_been_set()
+    #[Test]
+    public function it_will_use_the_app_name_if_no_title_has_been_set(): void
     {
         $this->assertSeeInView('<meta property="og:title" content="Esign">', 'open-graph');
     }
 
-    /** @test */
-    public function it_can_render_a_description()
+    #[Test]
+    public function it_can_render_a_description(): void
     {
         OpenGraph::setDescription('Esign helpt jouw merk met zijn online aanwezigheid ...');
         $this->assertSeeInView('<meta property="og:description" content="Esign helpt jouw merk met zijn online aanwezigheid ...">', 'open-graph');
     }
 
-    /** @test */
-    public function it_can_render_a_canonical_url()
+    #[Test]
+    public function it_can_render_a_canonical_url(): void
     {
         OpenGraph::setUrl('https://esign.eu');
         $this->assertSeeInView('<meta property="og:url" content="https://esign.eu">', 'open-graph');
     }
 
-    /** @test */
-    public function it_can_render_an_image()
+    #[Test]
+    public function it_can_render_an_image(): void
     {
         OpenGraph::setImage('https://esign.eu/share-image.jpg');
         $this->assertSeeInView('<meta property="og:image" content="https://esign.eu/share-image.jpg">', 'open-graph');
     }
 
-    /** @test */
-    public function it_wont_render_if_given_falsy_values()
+    #[Test]
+    public function it_wont_render_if_given_falsy_values(): void
     {
         OpenGraph::setType(null)
             ->setSiteName(null)
